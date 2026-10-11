@@ -1,0 +1,357 @@
+﻿
+@{
+    ViewBag.Title = "LienHe";
+    Layout = "~/Views/Home/About.cshtml";
+    Layout = null;
+}
+
+<h2>LienHe</h2>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ - Cây Xanh Shop</title>
+    <!-- Thư viện Font Awesome cho các icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #ffffff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+            .logo h1 {
+                margin-left: 10px;
+                font-size: 22px;
+                color: #2c5e3b;
+            }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+        }
+
+            nav ul li {
+                margin-left: 25px;
+            }
+
+                nav ul li a {
+                    text-decoration: none;
+                    color: #333;
+                    font-weight: 600;
+                    transition: color 0.3s;
+                }
+
+                    nav ul li a:hover {
+                        color: #2c5e3b;
+                    }
+
+        .cart {
+            position: relative;
+        }
+
+            .cart a {
+                text-decoration: none;
+                color: #333;
+            }
+
+        .fa-shopping-cart {
+            font-size: 24px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: #e74c3c;
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        /* MAIN MENU / DANH MỤC SẢN PHẨM CHÍNH */
+        .main-menu {
+            background-color: #2c5e3b;
+            padding: 12px 0;
+        }
+
+            .main-menu ul {
+                list-style-type: none;
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+            }
+
+                .main-menu ul li a {
+                    text-decoration: none;
+                    color: #fff;
+                    font-weight: 500;
+                    font-size: 15px;
+                }
+
+        /* NỘI DUNG TRANG LIÊN HỆ */
+        .contact-page {
+            padding: 50px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+            .contact-page h2 {
+                font-size: 32px;
+                color: #2c5e3b;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-info h3, .contact-form h3 {
+            color: #2c5e3b;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+            .contact-info p i {
+                color: #52b788;
+                margin-right: 10px;
+                width: 20px;
+            }
+
+        /* FORM LIÊN HỆ */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: 600;
+                font-size: 14px;
+                color: #444;
+            }
+
+            .form-group input, .form-group textarea {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                outline: none;
+                font-size: 14px;
+            }
+
+                .form-group input:focus, .form-group textarea:focus {
+                    border-color: #2c5e3b;
+                }
+
+        .submit-btn {
+            background-color: #2c5e3b;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+            .submit-btn:hover {
+                background-color: #1e3f28;
+            }
+
+        /* FOOTER */
+        .site-footer {
+            background-color: #1b4332;
+            color: #e9ecef;
+            padding: 40px 20px 20px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-col h3, .footer-col h4 {
+            color: #52b788;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .badge-commit {
+            display: inline-block;
+            background-color: #2d6a4f;
+            color: #d8f3dc;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 13px;
+            border: 1px solid #52b788;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #2d6a4f;
+            margin-top: 30px;
+            padding-top: 15px;
+            font-size: 13px;
+            color: #b7e4c7;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-seedling" style="font-size: 30px; color: #2c5e3b;"></i>
+            <h1>Cây Xanh Store</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="@Url.Action("Bonsai", "Home")">Trang chủ</a></li>
+                <li><a href="@Url.Action("SanPham", "Home")">Sản phẩm</a></li>
+                <li><a href="@Url.Action("GioiThieu", "Home")">Giới thiệu</a></li>
+                <li><a href="@Url.Action("LienHe", "Home")" style="color: #2c5e3b; font-weight: bold;">Liên hệ</a></li>
+                <li><a href="@Url.Action("CayDeBan", "Home")">Cây Để Bàn</a></li>
+                <li><a href="@Url.Action("CayVanPhong", "Home")">Cây Văn Phòng</a></li>
+                <li><a href="@Url.Action("CayPhongThuy", "Home")">Cây Phong Thủy</a></li>
+                <li><a href="@Url.Action("ChauPhuKien", "Home")">Chậu & Phụ Kiện</a></li>
+            </ul>
+        </nav>
+        <div class="cart">
+            <a href="#">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">3</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- THANH DANH MỤC -->
+    <nav class="main-menu">
+        <ul>
+            <li><a href="#">Cây Để Bàn</a></li>
+            <li><a href="#">Cây Văn Phòng</a></li>
+            <li><a href="#">Cây Phong Thủy</a></li>
+            <li><a href="#">Chậu & Phụ Kiện</a></li>
+        </ul>
+    </nav>
+
+    <!-- NỘI DUNG TRANG LIÊN HỆ -->
+    <main class="contact-page">
+        <h2>Liên Hệ Với Chúng Tôi</h2>
+        <div class="contact-container">
+            <!-- Thông tin liên hệ -->
+            <div class="contact-info">
+                <h3>Thông Tin Cửa Hàng</h3>
+                <p><i class="fa-solid fa-location-dot"></i><strong>Địa chỉ:</strong> Bình Nguyên Vô Tận</p>
+                <p><i class="fa-solid fa-phone"></i><strong>Số điện thoại:</strong> 09xxxxxxxx</p>
+                <p><i class="fa-solid fa-envelope"></i><strong>Email:</strong> support@cayxanhshop.com</p>
+                <p><i class="fa-solid fa-clock"></i><strong>Giờ làm việc:</strong> 08:00 - 21:00 (Hằng ngày)</p>
+                <p style="margin-top: 20px;">Đừng ngần ngại liên hệ với chúng tôi để được tư vấn miễn phí về cách chọn cây, chăm sóc cây và các chính sách bảo hành, đổi trả tốt nhất!</p>
+            </div>
+
+            <!-- Form gửi tin nhắn -->
+            <div class="contact-form">
+                <h3>Gửi Tin Nhắn</h3>
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="name">Họ và tên</label>
+                        <input type="text" id="name" placeholder="Nhập họ và tên của bạn..." required />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Số điện thoại</label>
+                        <input type="text" id="phone" placeholder="Nhập số điện thoại..." required />
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Nội dung cần tư vấn</label>
+                        <textarea id="message" rows="4" placeholder="Nhập nội dung tin nhắn..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Gửi Thông Tin</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>CÂY XANH SHOP</h3>
+                <p>Chuyên cung cấp cây cảnh, cây văn phòng, cây phong thủy chất lượng cao.</p>
+                <div class="badge-commit">
+                    <span>🌱 Cây xanh bao tươi</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Chính Sách & Hỗ Trợ</h4>
+                <p>✔ Hỗ trợ đổi trả tận tình</p>
+                <p>✔ Hướng dẫn chăm sóc cây</p>
+            </div>
+            <div class="footer-col">
+                <h4>Thông Tin Liên Hệ</h4>
+                <p>📍 <strong>Địa chỉ:</strong> Bình Nguyên Vô Tận</p>
+                <p>📞 <strong>Số điện thoại:</strong> 09xxxxxxxx</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Cây Xanh Shop. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+

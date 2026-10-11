@@ -1,0 +1,373 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Tất Cả Sản Phẩm - Cây Xanh Shop";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản Phẩm - Cây Xanh Shop</title>
+    <!-- Thư viện Font Awesome cho các icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #ffffff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+            .logo h1 {
+                margin-left: 10px;
+                font-size: 22px;
+                color: #2c5e3b;
+            }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+        }
+
+            nav ul li {
+                margin-left: 25px;
+            }
+
+                nav ul li a {
+                    text-decoration: none;
+                    color: #333;
+                    font-weight: 600;
+                    transition: color 0.3s;
+                }
+
+                    nav ul li a:hover {
+                        color: #2c5e3b;
+                    }
+
+        .cart {
+            position: relative;
+        }
+
+            .cart a {
+                text-decoration: none;
+                color: #333;
+            }
+
+        .fa-shopping-cart {
+            font-size: 24px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: #e74c3c;
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        /* MAIN MENU / DANH MỤC SẢN PHẨM CHÍNH */
+        .main-menu {
+            background-color: #2c5e3b;
+            padding: 12px 0;
+        }
+
+            .main-menu ul {
+                list-style-type: none;
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+            }
+
+                .main-menu ul li a {
+                    text-decoration: none;
+                    color: #fff;
+                    font-weight: 500;
+                    font-size: 15px;
+                }
+
+        /* PHẦN NỘI DUNG SẢN PHẨM */
+        .product-list-page {
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+            .product-list-page h2 {
+                font-size: 28px;
+                color: #2c5e3b;
+                margin-bottom: 25px;
+                text-align: center;
+            }
+
+        .list-container {
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .product-item {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+            .product-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+            .product-item img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 6px;
+            }
+
+            .product-item h3 {
+                font-size: 17px;
+                margin: 12px 0 8px;
+                color: #333;
+            }
+
+        .price {
+            font-weight: bold;
+            color: #c0392b;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .desc {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .buy-btn {
+            background: #2c5e3b;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            width: 100%;
+        }
+
+            .buy-btn:hover {
+                background: #1e3f28;
+            }
+
+        /* FOOTER */
+        .site-footer {
+            background-color: #1b4332;
+            color: #e9ecef;
+            padding: 40px 20px 20px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-col h3, .footer-col h4 {
+            color: #52b788;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .badge-commit {
+            display: inline-block;
+            background-color: #2d6a4f;
+            color: #d8f3dc;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 13px;
+            border: 1px solid #52b788;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #2d6a4f;
+            margin-top: 30px;
+            padding-top: 15px;
+            font-size: 13px;
+            color: #b7e4c7;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-seedling" style="font-size: 30px; color: #2c5e3b;"></i>
+            <h1>Cây Xanh Store</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="@Url.Action("Bonsai", "Home")">Trang chủ</a></li>
+                <li><a href="@Url.Action("SanPham", "Home")" style="color: #2c5e3b; font-weight: bold;">Sản phẩm</a></li>
+                <li><a href="@Url.Action("GioiThieu", "Home")">Giới thiệu</a></li>
+                <li><a href="@Url.Action("LienHe", "Home")">Liên hệ</a></li>
+                <li><a href="@Url.Action("CayDeBan", "Home")">Cây Để Bàn</a></li>
+                <li><a href="@Url.Action("CayVanPhong", "Home")">Cây Văn Phòng</a></li>
+                <li><a href="@Url.Action("CayPhongThuy", "Home")">Cây Phong Thủy</a></li>
+                <li><a href="@Url.Action("ChauPhuKien", "Home")">Chậu & Phụ Kiện</a></li>
+            </ul>
+        </nav>
+        <div class="cart">
+            <a href="#">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">3</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- THANH DANH MỤC -->
+    <nav class="main-menu">
+        <ul>
+            <li><a href="#">Cây Để Bàn</a></li>
+            <li><a href="#">Cây Văn Phòng</a></li>
+            <li><a href="#">Cây Phong Thủy</a></li>
+            <li><a href="#">Chậu & Phụ Kiện</a></li>
+        </ul>
+    </nav>
+
+    <!-- NỘI DUNG TRANG SẢN PHẨM (N NHIỀU CÂY HƠN) -->
+    <main class="product-list-page">
+        <h2>Tất Cả Sản Phẩm Cây Xanh</h2>
+        <ul class="list-container">
+            <li class="product-item">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.AbklRbWyPj5ZRUTDENKkawHaJ4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Cây Kim Tiền" />
+                <h3>Cây Nam Thiên Trúc</h3>
+                <p class="price">250,000 đ</p>
+                <p class="desc">Dễ chăm sóc, mang lại tài lộc và may mắn cho gia chủ.</p>
+                <button class="buy-btn">Thêm vào giỏ</button>
+            </li>
+            <li class="product-item">
+                <img src="https://hoaviencaycanh.com/wp-content/uploads/2024/03/cay-truc-bach-2.jpg" alt="Cây Trầu Bà" />
+                <h3>Cây Trúc Bách Hợp</h3>
+                <p class="price">180,000 đ</p>
+                <p class="desc">Lọc không khí tốt, thích hợp đặt ở bàn làm việc hoặc phòng khách.</p>
+                <button class="buy-btn">Thêm vào giỏ</button>
+            </li>
+            <li class="product-item">
+                <img src="https://vn-live-01.slatic.net/p/e3819e37200662886a5ff69311e0715f.jpg" alt="Cây Lưỡi Hổ" />
+                <h3>Cây Hoa Giấy</h3>
+                <p class="price">150,000 đ</p>
+                <p class="desc">Sức sống mãnh liệt, trừ tà và mang lại bình an.</p>
+                <button class="buy-btn">Thêm vào giỏ</button>
+            </li>
+            <li class="product-item">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.P7n7R6DQCssJcHAq-FdjQwHaFO?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Cây Hạnh Phúc" />
+                <h3>Cây Hoa Tường Vi</h3>
+                <p class="price">450,000 đ</p>
+                <p class="desc">Tán lá xanh tươi, mang lại năng lượng tích cực và sự hòa thuận.</p>
+                <button class="buy-btn">Thêm vào giỏ</button>
+            </li>
+            <li class="product-item">
+                <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=500&q=80" alt="Cây Kim Ngân" />
+                <h3>Cây Kim Ngân Bện Thân</h3>
+                <p class="price">320,000 đ</p>
+                <p class="desc">Biểu tượng của sự giàu có, thịnh vượng và quản lý tài chính tốt.</p>
+                <button class="buy-btn">Thêm vào giỏ</button>
+            </li>
+            <li class="product-item">
+                <img src="https://images.unsplash.com/photo-1463936575829-25148e1db1b8?auto=format&fit=crop&w=500&q=80" alt="Cây Lan Ý" />
+                <h3>Cây Lan Ý (Bạch Môn)</h3>
+                <p class="price">200,000 đ</p>
+                <p class="desc">Khả năng lọc không khí cực tốt, hoa trắng tinh khôi thanh lịch.</p>
+                <button class="buy-btn">Thêm vào giỏ</button>
+            </li>
+            <li class="product-item">
+                <img src="https://images.unsplash.com/photo-1520302368038-1ef1ca426d58?auto=format&fit=crop&w=500&q=80" alt="Cây Sen Đá" />
+                <h3>Chậu Sen Đá Mini</h3>
+                <p class="price">65,000 đ</p>
+                <p class="desc">Nhỏ gọn, dễ chăm sóc, sức sống bền bỉ phù hợp để bàn làm việc.</p>
+                <button class="buy-btn">Thêm vào giỏ</button>
+            </li>
+            <li class="product-item">
+                <img src="https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=500&q=80" alt="Cây Xương Rồng" />
+                <h3>Xương Rồng Cảnh Trụ</h3>
+                <p class="price">90,000 đ</p>
+                <p class="desc">Biểu tượng cho ý chí kiên cường, ít tốn công chăm sóc.</p>
+                <button class="buy-btn">Thêm vào giỏ</button>
+            </li>
+        </ul>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>CÂY XANH SHOP</h3>
+                <p>Chuyên cung cấp cây cảnh, cây văn phòng, cây phong thủy chất lượng cao.</p>
+                <div class="badge-commit">
+                    <span>🌱 Cây xanh bao tươi</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Chính Sách & Hỗ Trợ</h4>
+                <p>✔ Hỗ trợ đổi trả tận tình</p>
+                <p>✔ Hướng dẫn chăm sóc cây</p>
+            </div>
+            <div class="footer-col">
+                <h4>Thông Tin Liên Hệ</h4>
+                <p>📍 <strong>Địa chỉ:</strong> Bình Nguyên Vô Tận</p>
+                <p>📞 <strong>Số điện thoại:</strong> 09xxxxxxxx</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Cây Xanh Shop. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,274 @@
+﻿
+@{
+    ViewBag.Title = "GioiThieu";
+    Layout = "~/Views/Home/About.cshtml";
+    Layout = null;
+}
+
+<h2>GioiThieu</h2>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu - Cây Xanh Shop</title>
+    <!-- Thư viện Font Awesome cho các icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #ffffff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+            .logo h1 {
+                margin-left: 10px;
+                font-size: 22px;
+                color: #2c5e3b;
+            }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+        }
+
+            nav ul li {
+                margin-left: 25px;
+            }
+
+                nav ul li a {
+                    text-decoration: none;
+                    color: #333;
+                    font-weight: 600;
+                    transition: color 0.3s;
+                }
+
+                    nav ul li a:hover {
+                        color: #2c5e3b;
+                    }
+
+        .cart {
+            position: relative;
+        }
+
+            .cart a {
+                text-decoration: none;
+                color: #333;
+            }
+
+        .fa-shopping-cart {
+            font-size: 24px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: #e74c3c;
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        /* MAIN MENU / DANH MỤC SẢN PHẨM CHÍNH */
+        .main-menu {
+            background-color: #2c5e3b;
+            padding: 12px 0;
+        }
+
+            .main-menu ul {
+                list-style-type: none;
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+            }
+
+                .main-menu ul li a {
+                    text-decoration: none;
+                    color: #fff;
+                    font-weight: 500;
+                    font-size: 15px;
+                }
+
+        /* PHẦN NỘI DUNG GIỚI THIỆU */
+        .about-page {
+            padding: 50px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+            .about-page h2 {
+                font-size: 32px;
+                color: #2c5e3b;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+        .about-content {
+            background: #fff;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            line-height: 1.8;
+        }
+
+            .about-content p {
+                margin-bottom: 15px;
+                font-size: 15px;
+                color: #444;
+                text-align: justify;
+            }
+
+            .about-content h3 {
+                color: #2c5e3b;
+                margin-top: 25px;
+                margin-bottom: 12px;
+                font-size: 18px;
+            }
+
+        .features-list {
+            list-style-type: none;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+            .features-list li {
+                margin-bottom: 10px;
+                font-size: 15px;
+                color: #444;
+                line-height: 1.6;
+            }
+
+                .features-list li i {
+                    color: #52b788;
+                    margin-right: 10px;
+                }
+
+        /* FOOTER */
+        .site-footer {
+            background-color: #1b4332;
+            color: #e9ecef;
+            padding: 40px 20px 20px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-col h3, .footer-col h4 {
+            color: #52b788;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .badge-commit {
+            display: inline-block;
+            background-color: #2d6a4f;
+            color: #d8f3dc;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 13px;
+            border: 1px solid #52b788;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #2d6a4f;
+            margin-top: 30px;
+            padding-top: 15px;
+            font-size: 13px;
+            color: #b7e4c7;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-seedling" style="font-size: 30px; color: #2c5e3b;"></i>
+            <h1>Cây Xanh Store</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="@Url.Action("Bonsai", "Home")">Trang chủ</a></li>
+                <li><a href="@Url.Action("SanPham", "Home")">Sản phẩm</a></li>
+                <li><a href="@Url.Action("GioiThieu", "Home")" style="color: #2c5e3b; font-weight: bold;">Giới thiệu</a></li>
+                <li><a href="@Url.Action("LienHe", "Home")">Liên hệ</a></li>
+                <li><a href="@Url.Action("CayDeBan", "Home")">Cây Để Bàn</a></li>
+                <li><a href="@Url.Action("CayVanPhong", "Home")">Cây Văn Phòng</a></li>
+                <li><a href="@Url.Action("CayPhongThuy", "Home")">Cây Phong Thủy</a></li>
+                <li><a href="@Url.Action("ChauPhuKien", "Home")">Chậu & Phụ Kiện</a></li>
+            </ul>
+        </nav>
+        <div class="cart">
+            <a href="#">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">3</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- THANH DANH MỤC -->
+    <nav class="main-menu">
+        <ul>
+            <li><a href="#">Cây Để Bàn</a></li>
+            <li><a href="#">Cây Văn Phòng</a></li>
+            <li><a href="#">Cây Phong Thủy</a></li>
+            <li><a href="#">Chậu & Phụ Kiện</a></li>
+        </ul>
+    </nav>
+
+    <!-- NỘI DUNG TRANG GIỚI THIỆU -->
+    <main class="about-page">
+        <h2>Về Cây Xanh Shop</h2>
+        <div class="about-content">
+            <p><strong>Cây Xanh Shop</strong> – Đứng đầu lĩnh vực Online về thị trường cây cảnh.</p>
+
+            <ul class="features-list">
+                <li><i class="fa-solid fa-check"></i> – Đơn vị cây cảnh đầu tiên có cơ sở tại 2 thành phố lớn Hà Nội và Hồ Chí Minh.</li>
+                <li><i class="fa-solid fa-check"></i> – Bảo hành sau khi mua cây.</li>
+                <li><i class="fa-solid fa-check"></i> – Tư vấn chuyên nghiệp.</li>
+                <li><i class="fa-solid fa-check"></i> – Hỗ trợ giải đáp thắc mắc, chăm sóc trọn đời.</li>
+            </ul>
+
+            <p>Được thành lập vào ngày XX tháng XX năm 20XX, với sứ mệnh mang đến không gian xanh cho mọi người, chia sẻ kinh nghiệm và kiến thức chăm sóc cây cảnh. Đến với Cây Xanh Shop không đơn giản chỉ là mua cây, mà chúng tôi còn hướng dẫn quý khách hàng cách chăm sóc, cách khắc phục khi cây gặp phải vấn đề không tốt, cây cảnh mua tại cửa hàng đều được bảo hành 7 ngày đến 30 ngày tùy vào cây to hay nhỏ, để đảm bảo sản phẩm
